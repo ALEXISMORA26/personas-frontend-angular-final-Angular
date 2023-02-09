@@ -10,19 +10,22 @@ export class DataService {
   urlBase = 'http://localhost:8080/api/v1';
 
   cargarPersonas(){
-    //return this.httpClient.get(this.urlBase+ "/empleados");
-    return this.httpClient.get(this.urlBase+ "/persona");
+    return this.httpClient.get(this.urlBase+ "/empleados");
+    //return this.httpClient.get(this.urlBase+ "/persona");
   }
-
+  
   agregarPersona(persona: Persona){
+    let url: string;
+    //url = this.urlBase + '/empleados' + idPersona;
+    url = this.urlBase + '/empleados';  
     return this.httpClient.post(this.urlBase, persona);
   }
 
   modificarPersona(idPersona: number, persona: Persona){
     let url: string;
-    url = this.urlBase + '/editar/' + idPersona;
-    //url = this.urlBase + '/empleados';
-    this.httpClient.put(url, persona)
+    //url = this.urlBase + '/empleados' + idPersona;
+    url = this.urlBase + '/empleados';
+    this.httpClient.post(url, persona)
       .subscribe(
         (response) => {
           console.log('resultado modificar persona: ' + response);
@@ -33,7 +36,8 @@ export class DataService {
 
   eliminarPersona(idPersona: number){
     let url: string;
-    url = this.urlBase + '/' + idPersona;
+    //url = this.urlBase + '/' + idPersona;
+
     this.httpClient.delete(url)
     .subscribe(
       (response) => {
