@@ -42,7 +42,7 @@ export class DataService {
 
   eliminarPersona(idPersona: number){
     let url: string;
-    //url = this.urlBase + '/' + idPersona;
+    url = this.urlBase + '/empleados/' + idPersona;
 
     this.httpClient.delete(url)
     .subscribe(
