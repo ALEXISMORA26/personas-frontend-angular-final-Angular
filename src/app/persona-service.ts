@@ -21,14 +21,8 @@ export class PersonaService {
 
   agregarPersona(persona: Persona){
     console.log('persona a agregar:' + persona.nombre);
-    this.dataService.agregarPersona(persona)
-      .subscribe(
-        (persona: Persona) => {
-          // Recuperamos objeto Persona con el idPersona recien agregado
-          console.log('se agrega al arreglo la persona recien insertada suscriber:' + persona.idPersona);
-          this.personas.push(persona);
-        }
-      );
+    this.dataService.agregarPersona(persona);
+      
   }
 
   encontrarPersona(id: number){

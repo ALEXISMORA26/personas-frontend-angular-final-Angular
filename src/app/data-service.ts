@@ -14,17 +14,23 @@ export class DataService {
     //return this.httpClient.get(this.urlBase+ "/persona");
   }
   
-  agregarPersona(persona: Persona){
+  agregarPersona( persona: Persona){
     let url: string;
     //url = this.urlBase + '/empleados' + idPersona;
     url = this.urlBase + '/empleados';  
-    return this.httpClient.post(this.urlBase, persona);
+    this.httpClient.post(url, persona)
+    .subscribe(
+      (response) => {
+        console.log('resultado agregar persona: ' + response);
+      },
+      (error) => console.log('Error en agregar persona:' + error)
+    );
   }
 
   modificarPersona(idPersona: number, persona: Persona){
     let url: string;
-    //url = this.urlBase + '/empleados' + idPersona;
-    url = this.urlBase + '/empleados';
+    url = this.urlBase + '/empleados/' + idPersona;
+    //url = this.urlBase + '/empleados';
     this.httpClient.post(url, persona)
       .subscribe(
         (response) => {
